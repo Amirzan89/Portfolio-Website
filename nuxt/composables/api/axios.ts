@@ -45,6 +45,7 @@ export default () => {
                     switch(err.response.status){
                         case 404: return { status:'error', message: 'not found', code: 404 };
                         case 419:
+                        case 429:
                             if (retryCount <= 3) {
                                 retryCount++;
                                 await fetchCsrfToken();
